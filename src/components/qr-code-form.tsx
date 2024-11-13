@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,17 +13,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FileText, Link, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import type { QRCodeErrorCorrectionLevel } from "qrcode";
 import { ColorPicker } from "./color-picker";
-import type { ActiveTab, QRCodeFormProps, QRCodeOptions } from "@/types";
+import type { QRCodeFormProps, QRCodeOptions } from "@/types";
 
-export function QRCodeForm({
-  onGenerate,
-  loading,
-  tab,
-  setTab,
-}: QRCodeFormProps) {
+export function QRCodeForm({ onGenerate, loading }: QRCodeFormProps) {
   const [input, setInput] = useState<string>("");
   const [errorLevel, setErrorLevel] = useState<QRCodeErrorCorrectionLevel>("M");
   const [darkColor, setDarkColor] = useState<string>("#000000");
@@ -45,40 +40,29 @@ export function QRCodeForm({
 
   return (
     <div className="space-y-6">
-      <Tabs value={tab} onValueChange={(value) => setTab(value as ActiveTab)}>
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="url">
-            <Link className="mr-2 h-4 w-4" />
-            URL
-          </TabsTrigger>
-          <TabsTrigger value="text">
-            <FileText className="mr-2 h-4 w-4" />
-            Text
-          </TabsTrigger>
-        </TabsList>
+      <div>
+        <TabsContent value="url">
+          <Label htmlFor="url">Enter URL</Label>
+          <Input
+            id="url"
+            placeholder="https://example.com"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="mt-1"
+          />
+        </TabsContent>
 
-        <div className="mt-6">
-          <TabsContent value="url">
-            <Label htmlFor="url">Enter URL</Label>
-            <Input
-              id="url"
-              placeholder="https://example.com"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-          </TabsContent>
-
-          <TabsContent value="text">
-            <Label htmlFor="text">Enter Text</Label>
-            <Input
-              id="text"
-              placeholder="Enter your text here"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-          </TabsContent>
-        </div>
-      </Tabs>
+        <TabsContent value="text">
+          <Label htmlFor="text">Enter Text</Label>
+          <Input
+            id="text"
+            placeholder="Enter your text here"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="mt-1"
+          />
+        </TabsContent>
+      </div>
 
       {/* Options Section */}
       <div className="space-y-6">
@@ -110,7 +94,6 @@ export function QRCodeForm({
             min={0}
             max={5}
             step={1}
-            className="mt-2"
           />
         </div>
 

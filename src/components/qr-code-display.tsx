@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Download, QrCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
