@@ -1,10 +1,11 @@
+import type { ActiveTab } from "@/types";
 import { z } from "zod";
 
 const urlSchema = z.string().url();
 
 export const validateQRInput = (
   input: string,
-  type: "url" | "text",
+  type: ActiveTab,
 ): string | null => {
   if (!input) {
     return "Please provide input data";

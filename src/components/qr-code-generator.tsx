@@ -25,18 +25,18 @@ export function QRCodeGenerator() {
   const [result, setResult] = useState<ScanResult>({} as ScanResult);
 
   const handleGenerate = async (input: string, options: QRCodeOptions) => {
+    if (activeTab === "scan") {
+      toast({
+        title: "Error",
+        description: "Cannot generate QR code when selecting 'Scan'",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      setLoading(true);
-
-      if (activeTab === "scan") {
-        toast({
-          title: "Error",
-          description: "Cannot generate QR code when selecting 'Scan'",
-          variant: "destructive",
-        });
-        return;
-      }
-
       const validationError = validateQRInput(input, activeTab);
       if (validationError) {
         toast({
@@ -51,12 +51,12 @@ export function QRCodeGenerator() {
       setQrCode(qr);
       setResolution(options.resolution);
     } catch (error) {
+      console.error(error);
       toast({
         title: "Error",
         description: "Failed to generate QR code",
         variant: "destructive",
       });
-      console.error(error);
     } finally {
       setLoading(false);
     }
