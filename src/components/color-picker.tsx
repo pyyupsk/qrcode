@@ -9,17 +9,10 @@ import {
 } from "@/components/ui/popover";
 import { colors } from "@/constants/colors";
 import { cn } from "@/lib/utils";
+import type { ColorPickerProps } from "@/types";
 import { Paintbrush } from "lucide-react";
 
-export function ColorPicker({
-  color,
-  setColor,
-  className,
-}: {
-  color: string;
-  setColor: (color: string) => void;
-  className?: string;
-}) {
+export function ColorPicker({ color, setColor, className }: ColorPickerProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>

@@ -79,8 +79,8 @@ export function QRCodeGenerator() {
   };
 
   return (
-    <div className="grid h-[522px] gap-8 md:grid-cols-2">
-      <Card className="p-6">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <Card className="p-4 lg:p-6">
         <Tabs
           value={activeTab}
           onValueChange={(value) => setActiveTab(value as ActiveTab)}
@@ -114,10 +114,10 @@ export function QRCodeGenerator() {
         </Tabs>
       </Card>
 
-      <Card className="p-6">
+      <Card className="p-4 lg:p-6">
         <div className="flex h-full flex-col items-center justify-center">
           {activeTab !== "scan" ? (
-            <div className="p-6">
+            <div className="p-4 lg:p-6">
               <QRCodeDisplay
                 qrCode={qrCode}
                 resolution={resolution}
