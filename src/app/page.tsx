@@ -24,6 +24,21 @@ export default function Page() {
           </p>
         </div>
         <QRCodeGenerator />
+        <div className="mt-12 text-center">
+          <p className="text-sm text-muted-foreground md:text-base">
+            This website works entirely on the client side, so no data is sent
+            to the server. The source code is open source and can be viewed on{" "}
+            <a
+              href="https://github.com/pyyupsk/qrcode"
+              target="_blank"
+              rel="noreferrer"
+              className="text-foreground underline transition-colors duration-200 hover:text-muted-foreground"
+            >
+              GitHub
+            </a>
+            .
+          </p>
+        </div>
       </div>
     </main>
   );
