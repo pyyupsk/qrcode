@@ -20,7 +20,7 @@ export function QRCodeDisplay({
   }
 
   return (
-    <>
+    <div className="flex flex-col items-center">
       <p className="mb-4 text-center text-muted-foreground">
         Resolution: {resolution}
       </p>
@@ -37,6 +37,6 @@ export function QRCodeDisplay({
         <Download className="mr-2 h-4 w-4" />
         Download QR Code
       </Button>
-    </>
+    </div>
   );
 }

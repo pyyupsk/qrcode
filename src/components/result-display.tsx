@@ -19,7 +19,7 @@ export function ResultDisplay({ result, onReset, onCopy }: ResultDisplayProps) {
   }
 
   return (
-    <>
+    <div className="flex flex-col items-center">
       <div className="mb-6 flex w-full">
         <Image
           src={image.src}
@@ -51,6 +51,6 @@ export function ResultDisplay({ result, onReset, onCopy }: ResultDisplayProps) {
           Copy to clipboard
         </Button>
       </div>
-    </>
+    </div>
   );
 }
