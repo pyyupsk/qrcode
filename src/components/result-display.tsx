@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import type { ResultDisplayProps } from "@/types";
 import { Textarea } from "./ui/textarea";
 import Image from "next/image";
+import { toast } from "@/hooks/use-toast";
 
-export function ResultDisplay({ result, onReset, onCopy }: ResultDisplayProps) {
+export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
   const { data, image, width, height, format, timestamp } = result;
 
   if (!data) {
@@ -17,6 +18,14 @@ export function ResultDisplay({ result, onReset, onCopy }: ResultDisplayProps) {
       </div>
     );
   }
+
+  const onCopy = () => {
+    void navigator.clipboard.writeText(result.data);
+    toast({
+      title: "Copied to clipboard",
+      description: "QR code data copied to clipboard",
+    });
+  };
 
   return (
     <div className="flex flex-col items-center">

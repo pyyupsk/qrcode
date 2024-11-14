@@ -6,7 +6,7 @@ import { toast } from "@/hooks/use-toast";
 import { QRCodeForm } from "./qr-code-form";
 import { QRCodeDisplay } from "./qr-code-display";
 import { validateQRInput } from "@/lib/validation";
-import { generateQRCode, downloadQRCode } from "@/lib/qr-service";
+import { generateQRCode } from "@/lib/qr-service";
 import type { ActiveTab, QRCodeOptions, ScanResult } from "@/types";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Link, FileText, ScanLine } from "lucide-react";
@@ -67,19 +67,9 @@ export function QRCodeGenerator() {
     setResult(result);
   };
 
-  const handleDownload = () => {
-    if (!qrCode) return;
-    downloadQRCode(qrCode, resolution);
-  };
-
   const handleReset = () => {
     setQrCode("");
     setResult({} as ScanResult);
-  };
-
-  const handleCopy = () => {
-    if (!result) return;
-    void navigator.clipboard.writeText(result.data);
   };
 
   return (
@@ -122,18 +112,10 @@ export function QRCodeGenerator() {
         <div className="flex h-full flex-col items-center justify-center">
           {activeTab !== "scan" ? (
             <div className="p-4 lg:p-6">
-              <QRCodeDisplay
-                qrCode={qrCode}
-                resolution={resolution}
-                onDownload={handleDownload}
-              />
+              <QRCodeDisplay qrCode={qrCode} resolution={resolution} />
             </div>
           ) : (
-            <ResultDisplay
-              result={result}
-              onReset={handleReset}
-              onCopy={handleCopy}
-            />
+            <ResultDisplay result={result} onReset={handleReset} />
           )}
         </div>
       </Card>

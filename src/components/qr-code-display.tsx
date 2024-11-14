@@ -4,12 +4,9 @@ import Image from "next/image";
 import { Download, QrCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { QRCodeDisplayProps } from "@/types";
+import { downloadQRCode } from "@/lib/qr-service";
 
-export function QRCodeDisplay({
-  qrCode,
-  resolution,
-  onDownload,
-}: QRCodeDisplayProps) {
+export function QRCodeDisplay({ qrCode, resolution }: QRCodeDisplayProps) {
   if (!qrCode) {
     return (
       <div className="text-center text-muted-foreground">
@@ -18,6 +15,11 @@ export function QRCodeDisplay({
       </div>
     );
   }
+
+  const onDownload = () => {
+    if (!qrCode) return;
+    downloadQRCode(qrCode, resolution);
+  };
 
   return (
     <div className="flex flex-col items-center">
