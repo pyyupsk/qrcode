@@ -1,5 +1,6 @@
 export * from "./ActiveTab";
 export * from "./ColorPickerProps";
+export * from "./MetadataOptions";
 export * from "./QRCodeDisplayProps";
 export * from "./QRCodeFormProps";
 export * from "./QRCodeOptions";

@@ -1,5 +1,12 @@
 import { QRCodeGenerator } from "@/components/qr-code-generator";
+import { generateMetadata } from "@/lib/metadata";
 import { QrCode } from "lucide-react";
+
+export const metadata = generateMetadata({
+  description:
+    "Generate and scan QR codes with customized and advanced options",
+  title: "QR Code Studio",
+});
 
 export default function Page() {
   return (
@@ -13,8 +20,7 @@ export default function Page() {
             </h1>
           </div>
           <p className="text-base text-muted-foreground md:text-lg">
-            Generate customized QR codes for URLs, text, and files with advanced
-            options
+            Generate/Scan QR codes with customized, and advanced options
           </p>
         </div>
         <QRCodeGenerator />
