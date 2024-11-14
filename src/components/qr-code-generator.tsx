@@ -11,7 +11,11 @@ import type { ActiveTab, QRCodeOptions, ScanResult } from "@/types";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Link, FileText, ScanLine } from "lucide-react";
 import { QRCodeScanner } from "./qr-code-scanner";
-import { ResultDisplay } from "./result-display";
+import dynamic from "next/dynamic";
+
+const ResultDisplay = dynamic(() =>
+  import("./result-display").then((mod) => mod.ResultDisplay),
+);
 
 export function QRCodeGenerator() {
   const [activeTab, setActiveTab] = useState<ActiveTab>("url");

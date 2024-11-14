@@ -17,7 +17,7 @@ import { useDropzone } from "react-dropzone";
 
 export function QRCodeScanner({ onScanResult, loading }: QRCodeScannerProps) {
   const [inputFile, setInputFile] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState<string>("");
   const [pastedFile, setPastedFile] = useState<File | null>(null);
 
   const handleScan = async (image: HTMLImageElement) => {
