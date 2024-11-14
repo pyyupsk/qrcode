@@ -1,29 +1,60 @@
-# Create T3 App
+# QR Code Studio
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+QR Code Studio is a web application that allows users to generate, scan, and customize QR codes with advanced options. The application is built using Next.js and offers a user-friendly interface for creating and managing QR codes.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- **Generate QR Codes**: Create QR codes for URLs, and text.
+- **Scan QR Codes**: Upload an image and retrieve the data contained within the QR code.
+- **Customize Options**: Adjust error correction levels, margin sizes, colors, and resolution for generated QR codes.
+- **Client-Side Processing**: The application works entirely on the client side, ensuring that no data is sent to the server.
+- **Open Source**: The source code is available on GitHub for anyone to view and contribute.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Installation
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+To get started with QR Code Studio, follow these steps:
 
-## Learn More
+1. **Clone the repository**:
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+   ```bash
+   git clone https://github.com/pyyupsk/qrcode.git
+   cd qrcode
+   ```
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+2. **Install dependencies**:
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+   ```bash
+   npm install
+   ```
 
-## How do I deploy this?
+3. **Run the development server**:
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser** and navigate to `http://localhost:3000` to view the application.
+
+## Usage
+
+1. **Generating QR Codes**:
+   - Select the type of input (URL or text).
+   - Enter the desired content.
+   - Customize the QR code options (color, resolution, etc.).
+   - Click on "Generate QR Code" to create your QR code.
+
+2. **Scanning QR Codes**:
+   - Navigate to the scan tab.
+   - Use the upload option or drag and drop an image containing a QR code.
+   - Click on "Scan QR Code" to retrieve the data.
+
+3. **Downloading QR Codes**:
+   - After generating a QR code, you can download it by clicking the "Download QR Code" button.
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements or new features, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
