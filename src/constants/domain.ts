@@ -1,4 +1,2 @@
 export const BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://qrcode.pyyupsk.vercel.app"
-    : "http://localhost:3000"
+  process.env.NODE_ENV === "production" ? "https://qrcode.fasu.dev" : "http://localhost:3000"

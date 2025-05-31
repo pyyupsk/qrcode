@@ -10,7 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { colors } from "@/constants/colors"
 import { cn } from "@/lib/utils"
 
-export function ColorPicker({ color, setColor, className }: ColorPickerProps) {
+export function ColorPicker({ color, setColor, className }: Readonly<ColorPickerProps>) {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -31,18 +31,19 @@ export function ColorPicker({ color, setColor, className }: ColorPickerProps) {
             ) : (
               <Paintbrush className="h-4 w-4" />
             )}
-            <div className="flex-1 truncate">{color ? color : "Pick a color"}</div>
+            <div className="flex-1 truncate">{color || "Pick a color"}</div>
           </div>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-64">
         <div className="mt-0 flex w-full flex-wrap gap-1">
           {colors.map((s) => (
-            <div
+            <button
               key={s}
               style={{ background: s }}
-              className="h-6 w-6 cursor-pointer rounded-md active:scale-105"
+              className="h-6 w-6 cursor-pointer rounded-md border-0 p-0 active:scale-105"
               onClick={() => setColor(s)}
+              aria-label={`Select color ${s}`}
             />
           ))}
         </div>

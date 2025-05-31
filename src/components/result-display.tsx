@@ -10,7 +10,7 @@ import { toast } from "@/hooks/use-toast"
 
 import { Textarea } from "./ui/textarea"
 
-export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
+export function ResultDisplay({ result, onReset }: Readonly<ResultDisplayProps>) {
   const { data, image, width, height, format, timestamp } = result
 
   if (!data) {

@@ -87,7 +87,7 @@ const formatPatterns: Record<string, RegExp> = {
   Email:
     /^[a-zA-Z0-9.!#$%& *+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
   Contact: /^(tel:|MATMSG:|BEGIN:VCARD|MAILTO:|SMS:|smsto:|mms:|mmsto:)/,
-  JSON: /^\s*({(?:[^{}]|"[^"]*")*}|\[(?:[^[\]]|"[^"]*")*\])\s*$/,
+  JSON: /^\s*[{[].*[}\]]\s*$/,
   Phone: /^(?:\(\d{3}\)\s?|\d{3}-)\d{3}-\d{4}$/,
   URL: /^http/,
   WiFi: /^WIFI/,

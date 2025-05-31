@@ -22,7 +22,7 @@ import { TabsContent } from "@/components/ui/tabs"
 
 import { ColorPicker } from "./color-picker"
 
-export function QRCodeForm({ onGenerate, loading }: QRCodeFormProps) {
+export function QRCodeForm({ onGenerate, loading }: Readonly<QRCodeFormProps>) {
   const [input, setInput] = useState<string>("")
   const [errorLevel, setErrorLevel] = useState<QRCodeErrorCorrectionLevel>("M")
   const [darkColor, setDarkColor] = useState<string>("#000000")

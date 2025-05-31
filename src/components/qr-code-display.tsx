@@ -8,7 +8,7 @@ import type { QRCodeDisplayProps } from "@/types"
 import { Button } from "@/components/ui/button"
 import { downloadQRCode } from "@/lib/qr-service"
 
-export function QRCodeDisplay({ qrCode, resolution }: QRCodeDisplayProps) {
+export function QRCodeDisplay({ qrCode, resolution }: Readonly<QRCodeDisplayProps>) {
   if (!qrCode) {
     return (
       <div className="text-muted-foreground text-center">
