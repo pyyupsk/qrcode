@@ -9,7 +9,7 @@ import { downloadQRCode } from "@/lib/qr-service";
 export function QRCodeDisplay({ qrCode, resolution }: QRCodeDisplayProps) {
   if (!qrCode) {
     return (
-      <div className="text-center text-muted-foreground">
+      <div className="text-muted-foreground text-center">
         <QrCode className="mx-auto mb-4 h-96 w-80 opacity-20" />
         <p>Generated QR code will appear here</p>
       </div>
@@ -23,7 +23,7 @@ export function QRCodeDisplay({ qrCode, resolution }: QRCodeDisplayProps) {
 
   return (
     <div className="flex flex-col items-center">
-      <p className="mb-4 text-center text-muted-foreground">
+      <p className="text-muted-foreground mb-4 text-center">
         Resolution: {resolution}
       </p>
       <div className="mb-6">

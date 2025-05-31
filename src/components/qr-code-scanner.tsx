@@ -126,7 +126,7 @@ export function QRCodeScanner({ onScanResult, loading }: QRCodeScannerProps) {
             {loading ? (
               <Loader2 className="h-6 w-6 animate-spin" />
             ) : (
-              <p className="text-center text-muted-foreground">
+              <p className="text-muted-foreground text-center">
                 {!pastedFile
                   ? "Drag & Drop an image here or click to select"
                   : "Image selected"}

@@ -12,7 +12,7 @@ export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
 
   if (!data) {
     return (
-      <div className="text-center text-muted-foreground">
+      <div className="text-muted-foreground text-center">
         <ScanText className="mx-auto mb-4 h-96 w-80 opacity-20" />
         <p>QR code data will appear here</p>
       </div>
@@ -37,7 +37,7 @@ export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
           width={image.width}
           height={image.height}
         />
-        <div className="ml-4 text-muted-foreground">
+        <div className="text-muted-foreground ml-4">
           <p>
             <strong>Format:</strong> {format}
           </p>
