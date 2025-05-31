@@ -214,6 +214,7 @@ export async function GET() {
                   position: "relative",
                 }}
               >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={qrCode}
                   alt="QR code preview"
