@@ -46,6 +46,40 @@ A modern web application for creating and scanning QR codes with advanced custom
 - Click the download button to save your QR code
 - Choose your preferred image format and quality
 
+### API Usage
+
+The app provides REST API endpoints for generating QR codes programmatically:
+
+#### GET /api/generate
+
+Query Parameters:
+- `text` (required): Content to encode
+- `level` (optional): Error correction level (L, M, Q, H) - defaults to H
+- `margin` (optional): Border size (0-10) - defaults to 4
+- `dark` (optional): Dark color hex - defaults to #000000
+- `light` (optional): Light color hex - defaults to #ffffff
+- `size` (optional): Image size in pixels (100-2000) - defaults to 512
+
+Example:
+```
+GET /api/generate?text=hello&level=H&margin=4&dark=#000000&light=#ffffff&size=512
+```
+
+Response:
+```json
+{
+  "qrCode": "data:image/png;base64,..." // base64 encoded PNG
+}
+```
+
+Error Response:
+```json
+{
+  "error": "Invalid request data",
+  "details": [...] // validation errors
+}
+```
+
 ## Contributing
 
 Found a bug or have an idea? Contributions are welcome! Feel free to:
