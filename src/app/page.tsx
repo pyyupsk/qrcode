@@ -4,7 +4,7 @@ import { QRCodeGenerator } from "@/components/qr-code-generator"
 import { generateMetadata } from "@/lib/metadata"
 
 export const metadata = generateMetadata({
-  description: "Generate and scan QR codes with customized and advanced options",
+  description: "Create, customize, and scan QR codes with advanced features and real-time preview",
   title: "QR Code Studio",
 })
 
@@ -18,21 +18,20 @@ export default function Page() {
             <h1 className="text-2xl font-bold tracking-tight md:text-4xl">QR Code Studio</h1>
           </div>
           <p className="text-muted-foreground text-base md:text-lg">
-            Generate/Scan QR codes with customized, and advanced options
+            Create stunning QR codes with advanced customization options
           </p>
         </div>
         <QRCodeGenerator />
         <div className="mt-12 text-center">
           <p className="text-muted-foreground text-sm md:text-base">
-            This website works entirely on the client side, so no data is sent to the server. The
-            source code is open source and can be viewed on{" "}
+            Your data stays private - everything runs in your browser. Check out the{" "}
             <a
               href="https://github.com/pyyupsk/qrcode"
               target="_blank"
               rel="noreferrer"
               className="text-foreground hover:text-muted-foreground underline transition-colors duration-200"
             >
-              GitHub
+              open source code
             </a>
             {""}.
           </p>

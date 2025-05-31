@@ -79,7 +79,7 @@ export function QRCodeScanner({ onScanResult, loading }: Readonly<QRCodeScannerP
   return (
     <div className="mt-3.5 space-y-6">
       <div className="flex flex-col space-y-2">
-        <Label htmlFor="file">Upload Image</Label>
+        <Label htmlFor="file">Upload QR Code Image</Label>
         <Input
           id="file"
           type="file"
@@ -93,11 +93,11 @@ export function QRCodeScanner({ onScanResult, loading }: Readonly<QRCodeScannerP
       </div>
 
       <div className="flex flex-col space-y-2">
-        <Label htmlFor="url">Image URL</Label>
+        <Label htmlFor="url">QR Code Image URL</Label>
         <Input
           id="url"
           type="url"
-          placeholder="https://example.com/qr-code.png"
+          placeholder="https://example.com/qr-code.jpg"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           disabled={loading || !!inputFile || !!pastedFile}
@@ -105,7 +105,7 @@ export function QRCodeScanner({ onScanResult, loading }: Readonly<QRCodeScannerP
       </div>
 
       <div className="flex flex-col space-y-2">
-        <Label>Drag and Drop Image</Label>
+        <Label>Drop QR Code Image Here</Label>
         <div
           className="flex h-[170px] items-center justify-center rounded-lg border-2 border-dashed"
           {...getRootProps()}
@@ -120,7 +120,9 @@ export function QRCodeScanner({ onScanResult, loading }: Readonly<QRCodeScannerP
               <Loader2 className="h-6 w-6 animate-spin" />
             ) : (
               <p className="text-muted-foreground text-center">
-                {!pastedFile ? "Drag & Drop an image here or click to select" : "Image selected"}
+                {!pastedFile
+                  ? "Drop your QR code image here or click to browse"
+                  : "Image ready to scan"}
               </p>
             )}
           </div>
@@ -129,16 +131,16 @@ export function QRCodeScanner({ onScanResult, loading }: Readonly<QRCodeScannerP
 
       <div className="flex w-full items-center gap-2">
         <Button onClick={handleReset} className="w-full" disabled={loading} variant="outline">
-          Reset Image Selection
+          Clear Selection
         </Button>
         <Button onClick={handleSubmit} className="w-full" disabled={loading}>
           {loading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Scanning...
+              Decoding QR Code...
             </>
           ) : (
-            "Scan QR Code"
+            "Decode QR Code"
           )}
         </Button>
       </div>

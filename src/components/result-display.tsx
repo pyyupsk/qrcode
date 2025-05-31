@@ -17,7 +17,7 @@ export function ResultDisplay({ result, onReset }: Readonly<ResultDisplayProps>)
     return (
       <div className="text-muted-foreground text-center">
         <ScanText className="mx-auto mb-4 h-96 w-80 opacity-20" />
-        <p>QR code data will appear here</p>
+        <p>Scan a QR code to see its contents here</p>
       </div>
     )
   }
@@ -42,13 +42,13 @@ export function ResultDisplay({ result, onReset }: Readonly<ResultDisplayProps>)
         />
         <div className="text-muted-foreground ml-4">
           <p>
-            <strong>Format:</strong> {format}
+            <strong>Image Format:</strong> {format}
           </p>
           <p>
-            <strong>Dimensions:</strong> {width} x {height} px
+            <strong>Image Size:</strong> {width} x {height} pixels
           </p>
           <p>
-            <strong>Timestamp:</strong> {new Date(timestamp).toLocaleString()}
+            <strong>Scanned At:</strong> {new Date(timestamp).toLocaleString()}
           </p>
         </div>
       </div>
@@ -56,11 +56,11 @@ export function ResultDisplay({ result, onReset }: Readonly<ResultDisplayProps>)
       <div className="flex gap-2">
         <Button onClick={onReset} variant="outline">
           <Delete className="mr-2 h-4 w-4" />
-          Reset result output
+          Clear Results
         </Button>
         <Button onClick={onCopy}>
           <Copy className="mr-2 h-4 w-4" />
-          Copy to clipboard
+          Copy Content
         </Button>
       </div>
     </div>
