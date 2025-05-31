@@ -1,6 +1,6 @@
-import type { ScanResult } from "./ScanResult";
+import type { ScanResult } from "./ScanResult"
 
-export interface ResultDisplayProps {
-  result: ScanResult;
-  onReset: () => void;
+export type ResultDisplayProps = {
+  result: ScanResult
+  onReset: () => void
 }

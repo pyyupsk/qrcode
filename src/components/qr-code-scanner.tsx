@@ -1,83 +1,80 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
-import {
-  loadImageFromUrl,
-  loadImageFromFile,
-  scanQRCode,
-} from "@/lib/scan-service";
-import type { QRCodeScannerProps } from "@/types";
-import { cn } from "@/lib/utils";
-import { useDropzone } from "react-dropzone";
+import { Loader2 } from "lucide-react"
+import { useState } from "react"
+import { useDropzone } from "react-dropzone"
 
-export function QRCodeScanner({ onScanResult, loading }: QRCodeScannerProps) {
-  const [inputFile, setInputFile] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string>("");
-  const [pastedFile, setPastedFile] = useState<File | null>(null);
+import type { QRCodeScannerProps } from "@/types"
+
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { toast } from "@/hooks/use-toast"
+import { loadImageFromUrl, loadImageFromFile, scanQRCode } from "@/lib/scan-service"
+import { cn } from "@/lib/utils"
+
+export function QRCodeScanner({ onScanResult, loading }: Readonly<QRCodeScannerProps>) {
+  const [inputFile, setInputFile] = useState<File | null>(null)
+  const [imageUrl, setImageUrl] = useState<string>("")
+  const [pastedFile, setPastedFile] = useState<File | null>(null)
 
   const handleScan = async (image: HTMLImageElement) => {
     try {
-      const result = await scanQRCode(image);
-      onScanResult(result);
+      const result = await scanQRCode(image)
+      onScanResult(result)
     } catch (error) {
       toast({
         title: "Error",
-        description:
-          error instanceof Error ? error.message : "Failed to scan QR code",
+        description: error instanceof Error ? error.message : "Failed to scan QR code",
         variant: "destructive",
-      });
+      })
     }
-  };
+  }
 
   const handleReset = () => {
-    setInputFile(null);
-    setImageUrl("");
-    setPastedFile(null);
-  };
+    setInputFile(null)
+    setImageUrl("")
+    setPastedFile(null)
+  }
 
   const handleSubmit = async () => {
     try {
-      let image: HTMLImageElement | null = null;
+      let image: HTMLImageElement | null = null
 
-      if (inputFile) image = await loadImageFromFile(inputFile);
-      if (imageUrl) image = await loadImageFromUrl(imageUrl);
-      if (pastedFile) image = await loadImageFromFile(pastedFile);
+      if (inputFile) image = await loadImageFromFile(inputFile)
+      if (imageUrl) image = await loadImageFromUrl(imageUrl)
+      if (pastedFile) image = await loadImageFromFile(pastedFile)
 
       if (!image) {
         toast({
           title: "Error",
           description: "No image selected",
           variant: "destructive",
-        });
-        return;
+        })
+        return
       }
 
-      await handleScan(image);
+      await handleScan(image)
     } catch (error) {
-      console.error(error);
+      console.error(error)
       toast({
         title: "Error",
         description: "Failed to scan QR code",
         variant: "destructive",
-      });
+      })
     }
-  };
+  }
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/*": [],
     },
     onDrop: (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      if (file) void setPastedFile(file);
+      const file = acceptedFiles[0]
+      if (file) setPastedFile(file)
     },
     disabled: loading || !!imageUrl || !!pastedFile,
-  });
+  })
 
   return (
     <div className="mt-3.5 space-y-6">
@@ -88,8 +85,8 @@ export function QRCodeScanner({ onScanResult, loading }: QRCodeScannerProps) {
           type="file"
           accept="image/*"
           onChange={async (e) => {
-            const file = e.target.files?.[0];
-            if (file) setInputFile(file);
+            const file = e.target.files?.[0]
+            if (file) setInputFile(file)
           }}
           disabled={loading || !!imageUrl || !!pastedFile}
         />
@@ -115,21 +112,15 @@ export function QRCodeScanner({ onScanResult, loading }: QRCodeScannerProps) {
         >
           <input {...getInputProps()} />
           <div
-            className={cn(
-              "flex h-full w-full cursor-pointer items-center justify-center",
-              {
-                "cursor-not-allowed opacity-50":
-                  loading || !!inputFile || !!imageUrl,
-              },
-            )}
+            className={cn("flex h-full w-full cursor-pointer items-center justify-center", {
+              "cursor-not-allowed opacity-50": loading || !!inputFile || !!imageUrl,
+            })}
           >
             {loading ? (
               <Loader2 className="h-6 w-6 animate-spin" />
             ) : (
               <p className="text-muted-foreground text-center">
-                {!pastedFile
-                  ? "Drag & Drop an image here or click to select"
-                  : "Image selected"}
+                {!pastedFile ? "Drag & Drop an image here or click to select" : "Image selected"}
               </p>
             )}
           </div>
@@ -137,12 +128,7 @@ export function QRCodeScanner({ onScanResult, loading }: QRCodeScannerProps) {
       </div>
 
       <div className="flex w-full items-center gap-2">
-        <Button
-          onClick={handleReset}
-          className="w-full"
-          disabled={loading}
-          variant="outline"
-        >
+        <Button onClick={handleReset} className="w-full" disabled={loading} variant="outline">
           Reset Image Selection
         </Button>
         <Button onClick={handleSubmit} className="w-full" disabled={loading}>
@@ -157,5 +143,5 @@ export function QRCodeScanner({ onScanResult, loading }: QRCodeScannerProps) {
         </Button>
       </div>
     </div>
-  );
+  )
 }

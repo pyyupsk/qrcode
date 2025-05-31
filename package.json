@@ -1,19 +1,17 @@
 {
   "name": "qrcode",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977",
   "scripts": {
     "build": "next build",
-    "check": "next lint && tsc --noEmit",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
+    "format": "prettier --write . --list-different --cache",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "preview": "next build && next start",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
-    "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",
@@ -38,23 +36,24 @@
     "zod": "^3.25.42"
   },
   "devDependencies": {
-    "@types/eslint": "^9.6.1",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.28.0",
     "@types/node": "^22.15.29",
     "@types/qrcode": "^1.5.5",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
-    "@typescript-eslint/eslint-plugin": "^8.33.0",
-    "@typescript-eslint/parser": "^8.33.0",
     "eslint": "^9.28.0",
     "eslint-config-next": "^15.3.3",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-perfectionist": "^4.13.0",
+    "eslint-plugin-prettier": "^5.4.1",
+    "globals": "^16.2.0",
     "postcss": "^8.5.4",
     "prettier": "^3.5.3",
+    "prettier-plugin-pkg": "^0.19.1",
     "prettier-plugin-tailwindcss": "^0.6.12",
     "tailwindcss": "^4.1.8",
-    "typescript": "^5.8.3"
-  },
-  "ct3aMetadata": {
-    "initVersion": "7.38.1"
-  },
-  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.0"
+  }
 }

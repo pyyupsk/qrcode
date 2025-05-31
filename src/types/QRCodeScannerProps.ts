@@ -1,6 +1,6 @@
-import type { ScanResult } from "./ScanResult";
+import type { ScanResult } from "./ScanResult"
 
-export interface QRCodeScannerProps {
-  onScanResult: (result: ScanResult) => void;
-  loading: boolean;
+export type QRCodeScannerProps = {
+  onScanResult: (_result: ScanResult) => void
+  loading: boolean
 }

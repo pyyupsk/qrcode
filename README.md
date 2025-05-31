@@ -38,12 +38,14 @@ To get started with QR Code Studio, follow these steps:
 ## Usage
 
 1. **Generating QR Codes**:
+
    - Select the type of input (URL or text).
    - Enter the desired content.
    - Customize the QR code options (color, resolution, etc.).
    - Click on "Generate QR Code" to create your QR code.
 
 2. **Scanning QR Codes**:
+
    - Navigate to the scan tab.
    - Use the upload option or drag and drop an image containing a QR code.
    - Click on "Scan QR Code" to retrieve the data.

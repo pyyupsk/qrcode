@@ -1,10 +1,12 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import { Download, QrCode } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import type { QRCodeDisplayProps } from "@/types";
-import { downloadQRCode } from "@/lib/qr-service";
+import { Download, QrCode } from "lucide-react"
+import Image from "next/image"
+
+import type { QRCodeDisplayProps } from "@/types"
+
+import { Button } from "@/components/ui/button"
+import { downloadQRCode } from "@/lib/qr-service"
 
 export function QRCodeDisplay({ qrCode, resolution }: QRCodeDisplayProps) {
   if (!qrCode) {
@@ -13,19 +15,17 @@ export function QRCodeDisplay({ qrCode, resolution }: QRCodeDisplayProps) {
         <QrCode className="mx-auto mb-4 h-96 w-80 opacity-20" />
         <p>Generated QR code will appear here</p>
       </div>
-    );
+    )
   }
 
   const onDownload = () => {
-    if (!qrCode) return;
-    downloadQRCode(qrCode, resolution);
-  };
+    if (!qrCode) return
+    downloadQRCode(qrCode, resolution)
+  }
 
   return (
     <div className="flex flex-col items-center">
-      <p className="text-muted-foreground mb-4 text-center">
-        Resolution: {resolution}
-      </p>
+      <p className="text-muted-foreground mb-4 text-center">Resolution: {resolution}</p>
       <div className="mb-6">
         <Image
           src={qrCode}
@@ -40,5 +40,5 @@ export function QRCodeDisplay({ qrCode, resolution }: QRCodeDisplayProps) {
         Download QR Code
       </Button>
     </div>
-  );
+  )
 }

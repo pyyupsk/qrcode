@@ -1,4 +1,4 @@
-export interface QRCodeDisplayProps {
-  qrCode: string;
-  resolution: number;
+export type QRCodeDisplayProps = {
+  qrCode: string
+  resolution: number
 }

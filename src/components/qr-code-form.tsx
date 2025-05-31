@@ -1,30 +1,34 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { TabsContent } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
+import type { QRCodeErrorCorrectionLevel } from "qrcode"
+
+import { Loader2 } from "lucide-react"
+import { useState } from "react"
+
+import type { QRCodeFormProps, QRCodeOptions } from "@/types"
+
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Loader2 } from "lucide-react";
-import type { QRCodeErrorCorrectionLevel } from "qrcode";
-import { ColorPicker } from "./color-picker";
-import type { QRCodeFormProps, QRCodeOptions } from "@/types";
+} from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
+import { TabsContent } from "@/components/ui/tabs"
+
+import { ColorPicker } from "./color-picker"
 
 export function QRCodeForm({ onGenerate, loading }: QRCodeFormProps) {
-  const [input, setInput] = useState<string>("");
-  const [errorLevel, setErrorLevel] = useState<QRCodeErrorCorrectionLevel>("M");
-  const [darkColor, setDarkColor] = useState<string>("#000000");
-  const [lightColor, setLightColor] = useState<string>("#FFFFFF");
-  const [margin, setMargin] = useState<number[]>([1]);
-  const [resolution, setResolution] = useState<number>(1024);
+  const [input, setInput] = useState<string>("")
+  const [errorLevel, setErrorLevel] = useState<QRCodeErrorCorrectionLevel>("M")
+  const [darkColor, setDarkColor] = useState<string>("#000000")
+  const [lightColor, setLightColor] = useState<string>("#FFFFFF")
+  const [margin, setMargin] = useState<number[]>([1])
+  const [resolution, setResolution] = useState<number>(1024)
 
   const handleSubmit = async () => {
     const options: QRCodeOptions = {
@@ -33,10 +37,10 @@ export function QRCodeForm({ onGenerate, loading }: QRCodeFormProps) {
       resolution,
       darkColor,
       lightColor,
-    };
+    }
 
-    await onGenerate(input, options);
-  };
+    await onGenerate(input, options)
+  }
 
   return (
     <div className="space-y-6">
@@ -70,9 +74,7 @@ export function QRCodeForm({ onGenerate, loading }: QRCodeFormProps) {
           <Label>Error Correction Level</Label>
           <Select
             value={errorLevel}
-            onValueChange={(value) =>
-              setErrorLevel(value as QRCodeErrorCorrectionLevel)
-            }
+            onValueChange={(value) => setErrorLevel(value as QRCodeErrorCorrectionLevel)}
           >
             <SelectTrigger>
               <SelectValue />
@@ -88,13 +90,7 @@ export function QRCodeForm({ onGenerate, loading }: QRCodeFormProps) {
 
         <div className="flex flex-col space-y-2">
           <Label>Margin Size</Label>
-          <Slider
-            value={margin}
-            onValueChange={setMargin}
-            min={0}
-            max={5}
-            step={1}
-          />
+          <Slider value={margin} onValueChange={setMargin} min={0} max={5} step={1} />
         </div>
 
         <div className="flex flex-col space-y-2">
@@ -119,20 +115,12 @@ export function QRCodeForm({ onGenerate, loading }: QRCodeFormProps) {
         <div className="flex space-x-4">
           <div className="flex w-full flex-col space-y-2">
             <Label>QR Code Color</Label>
-            <ColorPicker
-              color={darkColor}
-              setColor={setDarkColor}
-              className="w-full"
-            />
+            <ColorPicker color={darkColor} setColor={setDarkColor} className="w-full" />
           </div>
 
           <div className="flex w-full flex-col space-y-2">
             <Label>Background Color</Label>
-            <ColorPicker
-              color={lightColor}
-              setColor={setLightColor}
-              className="w-full"
-            />
+            <ColorPicker color={lightColor} setColor={setLightColor} className="w-full" />
           </div>
         </div>
 
@@ -148,5 +136,5 @@ export function QRCodeForm({ onGenerate, loading }: QRCodeFormProps) {
         </Button>
       </div>
     </div>
-  );
+  )
 }

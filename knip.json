@@ -1,7 +1,6 @@
 {
-    "$schema": "https://unpkg.com/knip@5/schema.json",
-    "entry": ["src/index.{ts,tsx}"],
-    "project": ["src/**"],
-    "ignoreDependencies": ["qrcode", "@types/qrcode"],
-    "ignore": ["src/components/ui/**"]
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["src/index.{ts,tsx}"],
+  "project": ["src/**"],
+  "ignoreDependencies": ["qrcode", "@types/qrcode"]
 }

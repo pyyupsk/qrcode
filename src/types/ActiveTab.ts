@@ -1,1 +1,1 @@
-export type ActiveTab = "text" | "url" | "scan";
+export type ActiveTab = "text" | "url" | "scan"

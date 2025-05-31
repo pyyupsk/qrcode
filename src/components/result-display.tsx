@@ -1,14 +1,17 @@
-"use client";
+"use client"
 
-import { Copy, ScanText, Delete } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import type { ResultDisplayProps } from "@/types";
-import { Textarea } from "./ui/textarea";
-import Image from "next/image";
-import { toast } from "@/hooks/use-toast";
+import { Copy, ScanText, Delete } from "lucide-react"
+import Image from "next/image"
+
+import type { ResultDisplayProps } from "@/types"
+
+import { Button } from "@/components/ui/button"
+import { toast } from "@/hooks/use-toast"
+
+import { Textarea } from "./ui/textarea"
 
 export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
-  const { data, image, width, height, format, timestamp } = result;
+  const { data, image, width, height, format, timestamp } = result
 
   if (!data) {
     return (
@@ -16,16 +19,16 @@ export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
         <ScanText className="mx-auto mb-4 h-96 w-80 opacity-20" />
         <p>QR code data will appear here</p>
       </div>
-    );
+    )
   }
 
   const onCopy = () => {
-    void navigator.clipboard.writeText(result.data);
+    void navigator.clipboard.writeText(result.data)
     toast({
       title: "Copied to clipboard",
       description: "QR code data copied to clipboard",
-    });
-  };
+    })
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -61,5 +64,5 @@ export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
         </Button>
       </div>
     </div>
-  );
+  )
 }

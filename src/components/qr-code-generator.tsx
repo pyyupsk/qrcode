@@ -1,28 +1,29 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { toast } from "@/hooks/use-toast";
-import { QRCodeForm } from "./qr-code-form";
-import { QRCodeDisplay } from "./qr-code-display";
-import { validateQRInput } from "@/lib/validation";
-import { generateQRCode } from "@/lib/qr-service";
-import type { ActiveTab, QRCodeOptions, ScanResult } from "@/types";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Link, FileText, ScanLine } from "lucide-react";
-import { QRCodeScanner } from "./qr-code-scanner";
-import dynamic from "next/dynamic";
+import { Link, FileText, ScanLine } from "lucide-react"
+import dynamic from "next/dynamic"
+import { useState } from "react"
 
-const ResultDisplay = dynamic(() =>
-  import("./result-display").then((mod) => mod.ResultDisplay),
-);
+import type { ActiveTab, QRCodeOptions, ScanResult } from "@/types"
+
+import { Card } from "@/components/ui/card"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { toast } from "@/hooks/use-toast"
+import { generateQRCode } from "@/lib/qr-service"
+import { validateQRInput } from "@/lib/validation"
+
+import { QRCodeDisplay } from "./qr-code-display"
+import { QRCodeForm } from "./qr-code-form"
+import { QRCodeScanner } from "./qr-code-scanner"
+
+const ResultDisplay = dynamic(() => import("./result-display").then((mod) => mod.ResultDisplay))
 
 export function QRCodeGenerator() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>("url");
-  const [qrCode, setQrCode] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [resolution, setResolution] = useState<number>(1024);
-  const [result, setResult] = useState<ScanResult>({} as ScanResult);
+  const [activeTab, setActiveTab] = useState<ActiveTab>("url")
+  const [qrCode, setQrCode] = useState<string>("")
+  const [loading, setLoading] = useState<boolean>(false)
+  const [resolution, setResolution] = useState<number>(1024)
+  const [result, setResult] = useState<ScanResult>({} as ScanResult)
 
   const handleGenerate = async (input: string, options: QRCodeOptions) => {
     if (activeTab === "scan") {
@@ -30,55 +31,52 @@ export function QRCodeGenerator() {
         title: "Error",
         description: "Cannot generate QR code when selecting 'Scan'",
         variant: "destructive",
-      });
-      return;
+      })
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
 
     try {
-      const validationError = validateQRInput(input, activeTab);
+      const validationError = validateQRInput(input, activeTab)
       if (validationError) {
         toast({
           title: "Error",
           description: validationError,
           variant: "destructive",
-        });
-        return;
+        })
+        return
       }
 
-      const qr = await generateQRCode(input, options);
-      setQrCode(qr);
-      setResolution(options.resolution);
+      const qr = await generateQRCode(input, options)
+      setQrCode(qr)
+      setResolution(options.resolution)
     } catch (error) {
-      console.error(error);
+      console.error(error)
       toast({
         title: "Error",
         description: "Failed to generate QR code",
         variant: "destructive",
-      });
+      })
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const handleScanResult = (result: ScanResult) => {
-    if (!result) return;
-    setResult(result);
-  };
+    if (!result) return
+    setResult(result)
+  }
 
   const handleReset = () => {
-    setQrCode("");
-    setResult({} as ScanResult);
-  };
+    setQrCode("")
+    setResult({} as ScanResult)
+  }
 
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
       <Card className="p-4 lg:p-6">
-        <Tabs
-          value={activeTab}
-          onValueChange={(value) => setActiveTab(value as ActiveTab)}
-        >
+        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as ActiveTab)}>
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="url">
               <Link className="mr-2 h-4 w-4" />
@@ -120,5 +118,5 @@ export function QRCodeGenerator() {
         </div>
       </Card>
     </div>
-  );
+  )
 }

@@ -1,16 +1,14 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { colors } from "@/constants/colors";
-import { cn } from "@/lib/utils";
-import type { ColorPickerProps } from "@/types";
-import { Paintbrush } from "lucide-react";
+import { Paintbrush } from "lucide-react"
+
+import type { ColorPickerProps } from "@/types"
+
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { colors } from "@/constants/colors"
+import { cn } from "@/lib/utils"
 
 export function ColorPicker({ color, setColor, className }: ColorPickerProps) {
   return (
@@ -33,9 +31,7 @@ export function ColorPicker({ color, setColor, className }: ColorPickerProps) {
             ) : (
               <Paintbrush className="h-4 w-4" />
             )}
-            <div className="flex-1 truncate">
-              {color ? color : "Pick a color"}
-            </div>
+            <div className="flex-1 truncate">{color ? color : "Pick a color"}</div>
           </div>
         </Button>
       </PopoverTrigger>
@@ -59,5 +55,5 @@ export function ColorPicker({ color, setColor, className }: ColorPickerProps) {
         />
       </PopoverContent>
     </Popover>
-  );
+  )
 }

@@ -1,14 +1,16 @@
-import { BASE_URL } from "@/constants/domain";
-import type { MetadataOptions } from "@/types";
-import type { Metadata } from "next";
+import type { Metadata } from "next"
+
+import type { MetadataOptions } from "@/types"
+
+import { BASE_URL } from "@/constants/domain"
 
 const DEFAULT_AUTHOR = {
   name: "pyyupsk",
   url: BASE_URL,
-};
-const APPLICATION_NAME = "QR Code Studio";
-const TWITTER_HANDLE = "@pyyupsk_";
-const DEFAULT_IMAGE_DIMENSIONS = { height: 630, width: 1200 };
+}
+const APPLICATION_NAME = "QR Code Studio"
+const TWITTER_HANDLE = "@pyyupsk_"
+const DEFAULT_IMAGE_DIMENSIONS = { height: 630, width: 1200 }
 
 export function generateMetadata({
   additionalMetadata = {},
@@ -59,7 +61,7 @@ export function generateMetadata({
       card: "summary_large_image",
       creator: TWITTER_HANDLE,
     },
-  };
+  }
 
   // Merge baseMetadata with additionalMetadata using spread syntax
   return {
@@ -73,5 +75,5 @@ export function generateMetadata({
       ...baseMetadata.twitter,
       ...additionalMetadata.twitter,
     },
-  };
+  }
 }

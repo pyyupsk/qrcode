@@ -1,12 +1,12 @@
-import { QRCodeGenerator } from "@/components/qr-code-generator";
-import { generateMetadata } from "@/lib/metadata";
-import { QrCode } from "lucide-react";
+import { QrCode } from "lucide-react"
+
+import { QRCodeGenerator } from "@/components/qr-code-generator"
+import { generateMetadata } from "@/lib/metadata"
 
 export const metadata = generateMetadata({
-  description:
-    "Generate and scan QR codes with customized and advanced options",
+  description: "Generate and scan QR codes with customized and advanced options",
   title: "QR Code Studio",
-});
+})
 
 export default function Page() {
   return (
@@ -15,9 +15,7 @@ export default function Page() {
         <div className="mb-12 text-center">
           <div className="mb-4 flex items-center justify-center gap-3">
             <QrCode className="text-primary h-12 w-12" />
-            <h1 className="text-2xl font-bold tracking-tight md:text-4xl">
-              QR Code Studio
-            </h1>
+            <h1 className="text-2xl font-bold tracking-tight md:text-4xl">QR Code Studio</h1>
           </div>
           <p className="text-muted-foreground text-base md:text-lg">
             Generate/Scan QR codes with customized, and advanced options
@@ -26,8 +24,8 @@ export default function Page() {
         <QRCodeGenerator />
         <div className="mt-12 text-center">
           <p className="text-muted-foreground text-sm md:text-base">
-            This website works entirely on the client side, so no data is sent
-            to the server. The source code is open source and can be viewed on{" "}
+            This website works entirely on the client side, so no data is sent to the server. The
+            source code is open source and can be viewed on{" "}
             <a
               href="https://github.com/pyyupsk/qrcode"
               target="_blank"
@@ -36,10 +34,10 @@ export default function Page() {
             >
               GitHub
             </a>
-            .
+            {""}.
           </p>
         </div>
       </div>
     </main>
-  );
+  )
 }
