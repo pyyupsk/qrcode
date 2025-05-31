@@ -1,62 +1,59 @@
 # QR Code Studio
 
-QR Code Studio is a web application that allows users to generate, scan, and customize QR codes with advanced options. The application is built using Next.js and offers a user-friendly interface for creating and managing QR codes.
+A modern web application for creating and scanning QR codes with advanced customization options. Built with Next.js, it offers a sleek interface and powerful features for all your QR code needs.
 
 ## Features
 
-- **Generate QR Codes**: Create QR codes for URLs, and text.
-- **Scan QR Codes**: Upload an image and retrieve the data contained within the QR code.
-- **Customize Options**: Adjust error correction levels, margin sizes, colors, and resolution for generated QR codes.
-- **Client-Side Processing**: The application works entirely on the client side, ensuring that no data is sent to the server.
-- **Open Source**: The source code is available on GitHub for anyone to view and contribute.
+- **Create QR Codes**: Generate QR codes for URLs and custom messages
+- **Scan QR Codes**: Upload or paste images to decode QR codes instantly
+- **Advanced Customization**: Fine-tune error recovery, colors, borders, and image quality
+- **Privacy-First**: Everything runs in your browser - no data leaves your device
+- **Open Source**: Free to use, modify, and contribute
 
-## Installation
+## Quick Start
 
-To get started with QR Code Studio, follow these steps:
-
-1. **Clone the repository**:
+1. **Clone and install**:
 
    ```bash
    git clone https://github.com/pyyupsk/qrcode.git
    cd qrcode
-   ```
-
-2. **Install dependencies**:
-
-   ```bash
    npm install
    ```
 
-3. **Run the development server**:
-
+2. **Start the app**:
    ```bash
    npm run dev
    ```
+   Open `http://localhost:3000` in your browser
 
-4. **Open your browser** and navigate to `http://localhost:3000` to view the application.
+## How to Use
 
-## Usage
+### Creating QR Codes
 
-1. **Generating QR Codes**:
+1. Choose between URL or text input
+2. Enter your content
+3. Customize appearance and settings
+4. Click "Create QR Code"
 
-   - Select the type of input (URL or text).
-   - Enter the desired content.
-   - Customize the QR code options (color, resolution, etc.).
-   - Click on "Generate QR Code" to create your QR code.
+### Scanning QR Codes
 
-2. **Scanning QR Codes**:
+1. Switch to the scan tab
+2. Upload an image or paste a URL
+3. Click "Decode QR Code" to extract the content
 
-   - Navigate to the scan tab.
-   - Use the upload option or drag and drop an image containing a QR code.
-   - Click on "Scan QR Code" to retrieve the data.
+### Downloading
 
-3. **Downloading QR Codes**:
-   - After generating a QR code, you can download it by clicking the "Download QR Code" button.
+- Click the download button to save your QR code
+- Choose your preferred image format and quality
 
 ## Contributing
 
-Contributions are welcome! If you have suggestions for improvements or new features, feel free to open an issue or submit a pull request.
+Found a bug or have an idea? Contributions are welcome! Feel free to:
+
+- Open an issue
+- Submit a pull request
+- Suggest improvements
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+[MIT License](https://github.com/pyyupsk/qrcode/blob/main/LICENSE) - feel free to use this project however you like.
