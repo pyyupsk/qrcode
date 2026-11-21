@@ -17,12 +17,12 @@ A modern web application for creating and scanning QR codes with advanced custom
    ```bash
    git clone https://github.com/pyyupsk/qrcode.git
    cd qrcode
-   npm install
+   pnpm install
    ```
 
 2. **Start the app**:
    ```bash
-   npm run dev
+   pnpm dev
    ```
    Open `http://localhost:3000` in your browser
 
